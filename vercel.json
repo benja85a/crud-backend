@@ -2,10 +2,7 @@
   "version": 2,
   "functions": {
     "src/index.ts": {
-      "runtime": "bun"
+      "runtime": "nodejs18.x"
     }
-  },
-  "routes": [
-    { "src": "/(.*)", "dest": "src/index.ts" }
-  ]
+  }
 }

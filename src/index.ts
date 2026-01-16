@@ -15,34 +15,7 @@ app.use(
   })
 );
 
-app.get("/", (c) => {
-  return c.json({
-    message: "Products CRUD API - Prueba Técnica Frontend",
-    version: "1.0.0",
-    stack: "Bun + Hono + Drizzle ORM + Neon Database",
-    endpoints: {
-      "GET /api/products": "Listar productos (soporta ?search=...)",
-      "GET /api/products/:id": "Obtener producto por ID",
-      "POST /api/products": "Crear producto",
-      "PUT /api/products/:id": "Actualizar producto",
-      "DELETE /api/products/:id": "Eliminar producto",
-    },
-  });
-});
-
+app.get("/", (c) => c.json({ message: "Products CRUD API" }));
 app.route("/api/products", productsRouter);
 
-app.notFound((c) => {
-  return c.json({ error: "Ruta no encontrada" }, 404);
-});
-
-app.onError((err, c) => {
-  return c.json({ error: "Error interno del servidor" }, 500);
-});
-
-const port = process.env.PORT || 3001;
-
-export default {
-  port,
-  fetch: app.fetch,
-};
+export default app; // Node.js serverless funciona así con Vercel
